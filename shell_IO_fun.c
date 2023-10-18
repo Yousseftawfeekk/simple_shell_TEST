@@ -49,7 +49,7 @@ int write_SHELLhistory(info_t *info)
 	for (node = info->history; node; node = node->next)
 	{
 		puts_fileDes(node->str, filedes);
-		write_fileDes("\n", filedes);
+		write_fileDes('\n', filedes);
 	}
 	write_fileDes(BUFF_FLUSH, filedes);
 	close(filedes);
