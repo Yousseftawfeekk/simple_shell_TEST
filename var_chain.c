@@ -130,7 +130,7 @@ int var_Replace(info_t *info)
 					str_dup(int_str(info->status, 10, 0)));
 			continue;
 		}
-		if (!_strcmp(info->argv[i], "$$"))
+		if (!str_cmp(info->argv[i], "$$"))
 		{
 			string_Repalce(&(info->argv[i]),
 					str_dup(int_str(getpid(), 10, 0)));

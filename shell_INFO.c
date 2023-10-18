@@ -30,7 +30,7 @@ void setMYinfo(info_t *info, char **av)
 	info->program_name = av[0];
 	if (info->arg)
 	{
-		info->argv = splitstr1(info->arg, " \t");
+		info->argv = splitstr2(info->arg, " \t");
 		if (!info->argv)
 		{
 			info->argv = malloc(sizeof(char *) * 2);

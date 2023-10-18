@@ -1,4 +1,4 @@
-nclude "shell.h"
+#include "shell.h"
 
 /**
  * get_history_file - gets the history file
@@ -18,9 +18,9 @@ char *getSHELL_historyFile(info_t *info)
 	if (!buff)
 		return (NULL);
 	buff[0] = 0;
-	str_cpy(buff, dir);
-	str_cat(buff, "/");
-	str_cat(buff, HIST_FILE);
+	str_con(buff, dir);
+	str_con(buff, "/");
+	str_con(buff, HIST_FILE);
 	return (buff);
 }
 
@@ -49,9 +49,9 @@ int write_SHELLhistory(info_t *info)
 	for (node = info->history; node; node = node->next)
 	{
 		puts_fileDes(node->str, filedes);
-		puts_fileDes('\n', filedes);
+		puts_fileDes("\n", filedes);
 	}
-	_putfd(BUFF_FLUSH, filedes);
+	puts_fileDes(BUFF_FLUSH, filedes);
 	close(filedes);
 	return (1);
 }
@@ -82,7 +82,7 @@ int read_SHELLhistory(info_t *info)
 	if (!fstat(filedes, &st))
 		filesize = st.st_size;
 	
-	if (fsize < 2)
+	if (filesize < 2)
 		return (0);
 	buff = malloc(sizeof(char) * (filesize + 1));
 	
@@ -93,11 +93,11 @@ int read_SHELLhistory(info_t *info)
 	
 	if (rdlen <= 0)
 		return (free(buff), 0);
-	close(fd);
+	close(filedes);
 	for (i = 0; i < filesize; i++)
 		if (buff[i] == '\n')
 		{
-			buf[i] = 0;
+			buff[i] = 0;
 			build_MYhistoryList(info, buff + last, linecount++);
 			last = i + 1;
 		}
@@ -151,7 +151,7 @@ int recount_MYhistory(info_t *info)
 
 	while (node)
 	{
-		node->num = i++;
+		node->node_num = i++;
 		node = node->next;
 	}
 	return (info->histcount = i);

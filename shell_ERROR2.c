@@ -20,7 +20,7 @@ int errstr_int(char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 		{
 			final *= 10;
-			final += (s[i] - '0');
+			final += (str[i] - '0');
 			if (final > INT_MAX)
 				return (-1);
 		}

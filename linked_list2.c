@@ -72,7 +72,7 @@ size_t mylistPrint(const list_t *firstNode)
 
 	while (firstNode)
 	{
-		_puts(int_str(firstNode->num, 10, 0));
+		_puts(int_str(firstNode->node_num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(firstNode->str ? firstNode->str : "(nil)");

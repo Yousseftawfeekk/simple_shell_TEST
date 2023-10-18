@@ -52,7 +52,7 @@ int set_myNEW_environ(info_t *info)
 		error_puts("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (set_myenviron(info, info->argv[1], info->argv[2]))
+	if (set_MYenviron(info, info->argv[1], info->argv[2]))
 		return (0);
 	return (1);
 }
